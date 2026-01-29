@@ -1,2 +1,2 @@
-# AIAC - Auto Install Archlinux Command
+# ARAC - Auto run Archlinux Command
 autorun anything

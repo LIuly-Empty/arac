@@ -1,14 +1,28 @@
 #!/bin/bash
 clear
-echo "check EUFI mode or BIOS mode"
-if [ -d /sys/firmware/efi ]; then
-    echo "System is booted in UEFI mode"
-else
-    echo "System is booted in BIOS mode"
-fi
+printf "\t==============================================
+\t=       INSTALL ARCH LINUX AUTOMATION        =
+\t==============================================\n"
 
-printf "Cai dat arch linux cho nguoi moi:\n
-1. Kiem tra ket noi mang
-2. Phan vung o dia
-3. Dinh dang o dia
-4. Mount va truy cap arch-chroot"
+printf "Khi chay script nay, no se chay cho den khi hoan tat viec cai dat va dang nhap"
+printf "\nBan co muon tiep tuc khong? (y/n): "
+read choice
+if [[ "$choice" != "y" && "$choice" != "Y" ]]; then
+    printf "Thoat khoi script cai dat.\n"
+    exit 0
+fi
+printf "\nBat dau cai dat...\n"
+clear
+echo -n "Đang xử lý " 
+for i in {1..5}; do 
+    for s in / - \\ \|; do 
+        printf "\rĐang xử lý $s" 
+        sleep 0.2 
+    done 
+done
+
+clear
+
+cd scripts
+bash partition.bash
+
