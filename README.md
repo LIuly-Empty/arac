@@ -1,0 +1,2 @@
+# AIAC
+autorun anything
