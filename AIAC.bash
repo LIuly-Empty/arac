@@ -1,1 +1,2 @@
-echo "hello world";
+#!/bin/bash
+cfdisk
