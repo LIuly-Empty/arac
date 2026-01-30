@@ -40,13 +40,13 @@ Bat dau phan vung o dia cho UEFI o che do GPT\n"
         sleep 0.4
 
         # Phan vung o sda2 -> Linux Filesystem | type: 8300
-        sgdisk -n 2:0:0 -t 2:8300 -c 2:"Linux Filesystem" $DISK
+        sgdisk -n 2:0:+20G -t 2:8300 -c 2:"Linux Filesystem" $DISK
         mkfs.ext4 /dev/sda2
         printf "/dev/sda2 -> O dia cho Linux filesystem: $(lsblk -f | grep sda2)\n"
         sleep 0.4
 
         # Phan vung o sda3 -> Linux Swap | type: 8200
-        sgdisk -n 3:0:+2G -t 3:8200 -c 3:"Linux Swap" $DISK
+        sgdisk -n 3:0:+4G -t 3:8200 -c 3:"Linux Swap" $DISK
         mkswap /dev/sda3
         swapon /dev/sda3
         printf "/dev/sda3 -> O dia cho Linux swap: $(lsblk -f | grep sda3)\n"
@@ -58,7 +58,12 @@ Bat dau phan vung o dia cho UEFI o che do GPT\n"
         printf "/dev/sda4 -> O dia cho Linux home: $(lsblk -f | grep sda4)\n"
         sleep 0.4
 
-        printf "\nPhan vung o dia hoan tat!\n"
+        printf "\nPhan vung o dia hoan tat, ban co muon kiem tra dung luong cua cac phan vung?\n"
+        if [[ "$choice" != "y" && "$choice" != "Y" ]]; then
+            printf "Thoat khoi kiem tra dung luong.\n"
+        else
+            lsblk
+        fi
 
 
     fi
