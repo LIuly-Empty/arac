@@ -22,12 +22,8 @@ highlight 32 "
 \t==============================================
 \t=          PARTITION DISK SCRIPT             =
 \t=============================================="
-highlight 32 "\tTien trinh nay se thuc hien phan vung o dia\n"
 
-printf "\n\nKiem tra firmware:"
-sleep 0.4
 if [ -d /sys/firmware/efi ]; then
-
 # Phan vung cho UEFi
     highlight 36 "-> He thong dang chay o che do UEFI.
 Bat dau phan vung o dia cho UEFI o che do GPT\n"
@@ -72,7 +68,8 @@ Bat dau phan vung o dia cho UEFI o che do GPT\n"
         highlight 35 "/dev/sda4 -> O dia cho Linux home: $(lsblk -f | grep sda4)\n"
         sleep 0.4
 
-        printf "\nPhan vung o dia hoan tat, ban co muon kiem tra dung luong cua cac phan vung?\n"
+        printf "\nPhan vung o dia hoan tat, ban co muon kiem tra dung luong cua cac phan vung? (y/n)\n"
+        read choice
         if [[ "$choice" != "y" && "$choice" != "Y" ]]; then
             printf "Thoat khoi kiem tra dung luong.\n"
         else
