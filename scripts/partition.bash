@@ -20,7 +20,7 @@ highlight() {
 highlight 32 "\t=============================================="
 highlight 32 "\t=          PARTITION DISK SCRIPT             ="
 highlight 32 "\t=============================================="
-printf "1. Phan vung o dia"
+printf "1. Phan vung o dia\n"
 
 if [ -d /sys/firmware/efi ]; then
 # Phan vung cho UEFi
@@ -67,11 +67,8 @@ if [ -d /sys/firmware/efi ]; then
         printf "Nhan nut bat ki de tiep tuc...";
 
         read -n 1 -s
+        exit 0
         clear
-
-        cd ..
-        bash AIAC.bash
-
     fi
     firmware="UEFI"
 else
