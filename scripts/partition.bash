@@ -1,7 +1,6 @@
 #!bin/bash
 clear
 
-
 # Mã    Màu chữ	        Mã  Màu nền
 # 30	Xam	            40	Nền đen
 # 31	Đỏ	            41	Nền đỏ
@@ -13,26 +12,20 @@ clear
 # 37	Trắng	        47	Nền trắng
 
 highlight() {
-  local color=$1   # mã màu ANSI, ví dụ: 31 = đỏ, 32 = xanh lá
-  shift            # bỏ tham số đầu tiên, giữ lại phần còn lại
-  echo -e "\033[${color}m$@\033[0m"
+    local color=$1   # mã màu ANSI, ví dụ: 31 = đỏ, 32 = xanh lá
+    shift            # bỏ tham số đầu tiên, giữ lại phần còn lại
+    echo -e "\033[${color}m$@\033[0m"
 }
 
-highlight 32 "
-\t==============================================
-\t=          PARTITION DISK SCRIPT             =
-\t=============================================="
+highlight 32 "\t=============================================="
+highlight 32 "\t=          PARTITION DISK SCRIPT             ="
+highlight 32 "\t=============================================="
+printf "1. Phan vung o dia"
 
 if [ -d /sys/firmware/efi ]; then
 # Phan vung cho UEFi
-    highlight 36 "-> He thong dang chay o che do UEFI.
-Bat dau phan vung o dia cho UEFI o che do GPT\n"
-    for i in {1..5}; do 
-        for s in / - \\ \|; do 
-            printf "\rĐang xử lý $s" 
-            sleep 0.2 
-        done 
-    done
+    highlight 36 "-> He thong dang chay o che do UEFI."
+    highlight 36 "Bat dau phan vung o dia cho UEFI o che do GPT\n"
     printf "\n\nKiem tra dung luong o dia de phan vung: "
     lsblk | echo "sda" $(lsblk | grep sda | awk '{print $4}')
     if [ $(lsblk | grep sda | awk '{print $4}' | sed 's/G//') -lt 20 ]; then
@@ -68,14 +61,16 @@ Bat dau phan vung o dia cho UEFI o che do GPT\n"
         highlight 35 "/dev/sda4 -> O dia cho Linux home: $(lsblk -f | grep sda4)\n"
         sleep 0.4
 
-        printf "\nPhan vung o dia hoan tat, ban co muon kiem tra dung luong cua cac phan vung? (y/n)\n"
-        read choice
-        if [[ "$choice" != "y" && "$choice" != "Y" ]]; then
-            printf "Thoat khoi kiem tra dung luong.\n"
-        else
-            lsblk
-        fi
+        lsblk
 
+        printf "\nBuoc 2: Cai file systemlen o dia\n"
+        printf "Nhan nut bat ki de tiep tuc...";
+
+        read -n 1 -s
+        clear
+
+        cd ..
+        bash AIAC.bash
 
     fi
     firmware="UEFI"
@@ -92,5 +87,7 @@ Bat dau phan vung o dia cho BIOS o che do MBR\n"
     done
     printf "\n\nKiem tra dung luong o dia de phan vung: "
     echo "sda ->" $(lsblk | grep sda | awk '{print $4}')
+
+    
     firmware="BIOS"
 fi
