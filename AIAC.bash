@@ -72,7 +72,7 @@ printf "\t==============================================
 printf "Khi chay script nay, no se chay cho den khi hoan tat viec cai dat va dang nhap"
 printf "\nCac tien trinh se duoc dien ra:\n"
 echo -e "1. Phan vung o dia -> \033[35mHoan tat!\033[0m\n"
-printf "2. Cai dat he thong file len o dia\n -> \033[35mHoan tat!\033[0m\n"
+printf "2. Cai dat he thong file len o dia -> \033[35mHoan tat!\033[0m\n"
 printf "3. Cai dat he dieu hanh Arch Linux\n"
 printf "4. Cau hinh he thong co ban\n"
 printf "5. Cai dat bootloader\n"
@@ -85,4 +85,4 @@ clear
 highlight 31 "Truy cap vao he thong moi\n"
 sleep 5
 
-arch-chroot /mnt bash chroot-script/
+arch-chroot /mnt bash root/chroot-system.bash
