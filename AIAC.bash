@@ -41,7 +41,7 @@ printf "\nBat dau cai dat...\n"
 clear
 
 # Run partition script
-cd script
+cd archiso-script
 bash partition.bash
 sleep 3
 printf "\t==============================================
@@ -62,7 +62,7 @@ read -n 1 -s
 
 # Run install filesystem script
 clear
-cd script
+cd archiso-script
 bash filesystem.bash
 sleep 3
 printf "\t==============================================
