@@ -47,4 +47,4 @@ genfstab -U /mnt >> /mnt/etc/fstab
 clear
 highlight 31 "Truy cap vao he thong moi\n"
 sleep 5
-arch-chroot /mnt
+

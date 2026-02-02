@@ -63,3 +63,25 @@ read -n 1 -s
 # Run install filesystem script
 clear
 bash filesystem.bash
+sleep 3
+printf "\t==============================================
+\t=       INSTALL ARCH LINUX AUTOMATION        =
+\t==============================================\n"
+
+printf "Khi chay script nay, no se chay cho den khi hoan tat viec cai dat va dang nhap"
+printf "\nCac tien trinh se duoc dien ra:\n"
+echo -e "1. Phan vung o dia -> \033[35mHoan tat!\033[0m\n"
+printf "2. Cai dat he thong file len o dia\n -> \033[35mHoan tat!\033[0m\n"
+printf "3. Cai dat he dieu hanh Arch Linux\n"
+printf "4. Cau hinh he thong co ban\n"
+printf "5. Cai dat bootloader\n"
+printf "6. Cai dat them phan mem can thiet\n"
+printf "7. Hoan tat va khoi dong lai\n"
+echo "Nhan phim bat ky de tiep tuc..."
+read -n 1 -s
+
+clear
+highlight 31 "Truy cap vao he thong moi\n"
+sleep 5
+
+arch-chroot /mnt bash chroot-script/
