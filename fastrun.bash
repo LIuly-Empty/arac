@@ -20,8 +20,9 @@ swapon /dev/sda3
 sgdisk -n 4:0:0 -t 4:8300 -c 4:"Linux Home" $DISK
 mkfs.ext4 /dev/sda4
 
-echo "${TX_GREEN}Phan vung o dia hoan tat!${TX_NC}"
-sleep 2
+echo -e "${TX_GREEN}Phan vung o dia hoan tat!${TX_NC}"
+echo "Nhan nut bat ki de tiep tuc..."
+read -n 1 -s
 
 mount /dev/sda2 /mnt
 mkdir /mnt/boot
@@ -48,7 +49,7 @@ pacman -Sy grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
-echo "${TX_GREEN}Cai dat he dieu hanh va bootloader hoan tat!${TX_NC}"
+echo -e "${TX_GREEN}Cai dat he dieu hanh va bootloader hoan tat!${TX_NC}"
 echo "Nhan nut bat ki de khoi dong lai..."
 read -n 1 -s
 
