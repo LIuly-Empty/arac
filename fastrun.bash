@@ -3,6 +3,10 @@
 source src/color.bash
 
 clear
+
+DISK="/dev/sda"
+sgdisk --zap-all $DISK
+
 # Phan vung o sda1 -> EFI System Partition | type: EF00
 sgdisk -n 1:0:+512M -t 1:ef00 -c 1:"EFI System Partition" $DISK
 mkfs.fat -F32 /dev/sda1
